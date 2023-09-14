@@ -198,7 +198,40 @@ li:hover {
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
+#identification {
+	width: 40%;
+	margin: auto;
+	padding-top: 150px;
+	padding-bottom: 200px;
+}
+#identification >*{
+text-align: center;
+}
+#identification h2 {
+	margin-bottom: 20px;
+}
+#identification form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+#identification input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#identification label {
+	margin: 2em 0 1em 0;
+}
+#identification textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#identification p {
+	text-decoration: underline;
+}
 input[type="submit"]{
 	font-family: 'Syne';
 	font-weight: 700;

@@ -1,6 +1,6 @@
 const apiUrl = "http://localhost:5678/api/works/";
 const container = document.querySelector(".gallery");
-
+//fonction qui extrait les categories unique
 function getUniqueCategories(data) {
     const uniqueCategories = new Set();
 
@@ -26,12 +26,52 @@ const getWork = () => {
             <img src="${work.imageUrl}" alt="${work.title}">
             <figcaption>${work.title}</figcaption>
         `;
+        // ajout de l'attribut data-category avec la categorie correspondante
+        figure.setAttribute("data-category", work.category.name);
         container.appendChild(figure);
     })
     })
     .catch(function (error) {
         console.error("error fetching", error);
     })
+}
+
+// je selectione les boutons un à un
+const btnAll = document.querySelector(".tous");
+const btnObjets = document.querySelector(".objets");
+const btnAppartements = document.querySelector(".appartements");
+const btnHotels = document.querySelector(".hotels");
+
+//ajout de l'addeventlistener à chaque bouton
+btnAll.addEventListener("click", () => {
+    filterFigures("Tous");
+});
+
+btnObjets.addEventListener("click", () => {
+    filterFigures("Objets");
+});
+
+btnAppartements.addEventListener("click", () => {
+    filterFigures("Appartements");
+});
+
+btnHotels.addEventListener("click", () => {
+    filterFigures("Hotels & restaurants")
+})
+
+// Fonction pour filtrer les différent travaux
+function filterFigures(category) {
+    //on rappelle les balises figures
+    const figures = container.querySelectorAll("figure");
+
+    figures.forEach(figure => {
+        const figureCategory = figure.getAttribute("data-category");
+        if (category === "Tous" || figureCategory === category) {// le || est un ou logique qui dit que le block figure s'affiche seulement si il est associé à l'attribut correspondant
+            figure.style.display = "block"; // Affiche la figure si elle correspond à la catégorie sélectionné
+        } else {
+            figure.style.display = "none"; // masque la figure quand elle n'est pas associé à la catégorie sélectioné
+        }
+    });
 }
 
 getWork()
