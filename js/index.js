@@ -21,7 +21,7 @@ const getWork = () => {
 
         console.log(uniqueCategories);
         data.forEach(function(work) {
-            const figure =document.createElement("figure");
+            const figure = document.createElement("figure");
             figure.innerHTML =`
             <img src="${work.imageUrl}" alt="${work.title}">
             <figcaption>${work.title}</figcaption>
@@ -74,4 +74,28 @@ function filterFigures(category) {
     });
 }
 
+//function d'initialisation pour vérifier si l'utisateur est conecter ou pas
+function init () {
+    const token = sessionStorage.getItem("token");
+    const loginLink = document.querySelector("#loginLink");
+    const logoutLink = document.querySelector("#logoutLink");
+
+    if (token) {       
+        logoutLink.style.display = "inline";
+        loginLink.style.display = "none";
+        logoutLink.addEventListener("click", function () {
+            // Effacer le token de la session
+            sessionStorage.removeItem("token");
+            location.reload();
+        })
+    }else{
+        logoutLink.style.display = "none";
+        loginLink.style.display = "inline";
+        loginLink.addEventListener("click", function() {
+
+        })
+    }
+}
+window.addEventListener("load", init);
+console.log(sessionStorage)
 getWork()
