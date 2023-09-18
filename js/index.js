@@ -79,8 +79,10 @@ function init () {
     const token = sessionStorage.getItem("token");
     const loginLink = document.querySelector("#loginLink");
     const logoutLink = document.querySelector("#logoutLink");
+    const filters = document.querySelector(".filtres");
+    const blackblock = document.querySelector(".blackBlock")
 
-    if (token) {       
+    if (token) {
         logoutLink.style.display = "inline";
         loginLink.style.display = "none";
         logoutLink.addEventListener("click", function () {
@@ -88,14 +90,18 @@ function init () {
             sessionStorage.removeItem("token");
             location.reload();
         })
+        filters.style.display = "none";
     }else{
         logoutLink.style.display = "none";
         loginLink.style.display = "inline";
         loginLink.addEventListener("click", function() {
 
         })
+        blackblock.style.display = "none";
+        btnmobal.style.display = "none";
     }
 }
 window.addEventListener("load", init);
 console.log(sessionStorage)
 getWork()
+
