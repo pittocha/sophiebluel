@@ -10,8 +10,14 @@
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
 	<script type="module" src="/js/index.js"></script>
+	<script type="module" src="/js/modale.js"></script>
+	<script src="https://kit.fontawesome.com/09dda86dcd.js" crossorigin="anonymous"></script>
 </head>
 <body>
+	<div class="blackBlock">
+		<i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i><p class="blackBlocktext">Mode édition</p>
+		
+	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
 	<nav>
@@ -39,7 +45,16 @@
 		</article>
 	</section>
 	<section id="portfolio">
-		<h2>Mes Projets</h2>
+		<div class="entete">
+			<h2>Mes Projets</h2>
+			<button id="modifier"><i class="fa-regular fa-pen-to-square" style="color: black"></i>modifier</button>
+		</div>
+		<aside id="myModal" class="modal" style="display: none;">
+			<div class="modal-content">
+				<span class="close">&times</span>
+				<p class="modal-title">Galerie photo<!--contenu du modal--></p>
+			</div>
+		</aside>
 		<div class="filtres">
 			<button class="tous"><h3>Tous</h3></button>
 			<button class="objets"><h3>Objets</h3></button>
