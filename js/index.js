@@ -3,9 +3,8 @@ const container = document.querySelector(".gallery");
 //fonction qui extrait les categories unique
 function getUniqueCategories(data) {
     const uniqueCategories = new Set();
-
     data.forEach(item => {
-        uniqueCategories.add(item.category.name);
+        uniqueCategories.add(item.category.name);       
     });
     return [...uniqueCategories]
 }
@@ -29,13 +28,13 @@ const getWork = () => {
         // ajout de l'attribut data-category avec la categorie correspondante
         figure.setAttribute("data-category", work.category.name);
         container.appendChild(figure);
+        console.log(figure.innerHTML)
     })
     })
     .catch(function (error) {
         console.error("error fetching", error);
     })
 }
-
 // je selectione les boutons un à un
 const btnAll = document.querySelector(".tous");
 const btnObjets = document.querySelector(".objets");
@@ -81,7 +80,7 @@ function init () {
     const logoutLink = document.querySelector("#logoutLink");
     const filters = document.querySelector(".filtres");
     const blackblock = document.querySelector(".blackBlock")
-
+    const btnmobal = document.getElementById("modifier");
     if (token) {
         logoutLink.style.display = "inline";
         loginLink.style.display = "none";
