@@ -28,7 +28,6 @@ const getWork = () => {
         // ajout de l'attribut data-category avec la categorie correspondante
         figure.setAttribute("data-category", work.category.name);
         container.appendChild(figure);
-        console.log(figure.innerHTML)
     })
     })
     .catch(function (error) {

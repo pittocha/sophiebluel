@@ -170,13 +170,12 @@ li:hover {
 }
 /*pour le background du modal*/
 .modal {
-	display: flex;
-	position: fixed;
+	display: flex;	
 	z-index: 1;/*reste au premier plan*/
 	left: 0;
 	top: 0;
 	width: 100%;
-	height: 100%;
+	height: 300%;
 	background: rgba(0, 0, 0, 0.8);
 }
 .close {
@@ -194,7 +193,7 @@ li:hover {
 	text-align: center;
 	justify-content: center;
 	background-color: #fff;
-	width: 50%;
+	width: 700px;
 	height: auto;
 	margin: 15% auto;
 	padding: 20px;
@@ -211,11 +210,41 @@ li:hover {
 	grid-gap: 15px;
 	margin: 50px;
 }
+
 .miniature {
-	
 	width: 100%;
-	height: 100%;
-	
+	height: 100%;	
+}
+.fa-trash-can {
+	position: absolute;
+	z-index: 1;
+	margin-left: -25px;
+	margin-top: 5px;
+	border: 1px solid black;
+	background-color: #000000;
+	color: #fff;
+	padding: 2px;
+}
+.fa-trash-can:hover {
+	cursor: pointer;
+}
+.addWork {
+	color: #B3B3B3;
+  	width: 550px;
+  	height: 0px;
+  	
+}
+.modal-content button{
+	background-color: #1D6154;
+  	color: #fff;
+  	border: none;
+  	padding: 10px 30px;
+  	cursor: pointer;
+  	border-radius: 20px;
+	margin-top: 20px;
+	font-family: 'Syne';
+	font-weight: 200;
+	font-size: 15px;
 }
 .filtres {
 	text-align: center;
@@ -243,7 +272,7 @@ li:hover {
 	margin-top: 100px;
 	width: 100%;
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
+	grid-template-columns: repeat(3, 1fr);
 	grid-column-gap: 20px;
 	grid-row-gap: 20px;
 }
