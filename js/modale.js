@@ -9,8 +9,8 @@ const modalImg = document.querySelector(".modal-image");
 
 
 //ouverture du modal au click sur le bouton
-btnmobal.onclick = function(event) {
-    event.preventDefault();
+btnmobal.onclick = function() {
+    
     modal.style.display = "block";
     //selection du conteneur image modal
         
@@ -24,13 +24,14 @@ btnmobal.onclick = function(event) {
             
             data.forEach(function(work) {
                 
-                const image = document.createElement("small-work");
+                const image = document.createElement("div");
                 image.innerHTML = `
-                <img src="${work.imageUrl}" alt="${work.title}" class="miniature">
-                <i class="fa-solid fa-trash-can"></i>
-                `
+                <img src="${work.imageUrl}" id="${work.id}" alt="${work.title}" class="miniature">
+                <i class="fa-solid fa-trash-can" id="delete-icon"></i>
+                `;
+                image.classList.add("small-work")
                 modalImg.appendChild(image);
-                console.log(modal.innerHTML);
+                console.log(image.innerHTML);
             })
 
         })
