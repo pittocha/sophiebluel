@@ -9,30 +9,29 @@ function getUniqueCategories(data) {
     return [...uniqueCategories]
 }
 
-const getWork = () => {
-    fetch(apiUrl)
-    .then(function (resp) {
-        return resp.json();
-    })
-    .then(function (data) {
-        //appel de la fonction pour obtenir les categories
-        const uniqueCategories = getUniqueCategories(data);
+// fonction asynchrone pour recuperer les trevaux
+async function getWork() {
+    try {
+        const resp = await fetch(apiUrl);
+        const data = await resp.json ();
 
+        // Appel de la fonction pour abtenir les categories
+        const uniqueCategories = getUniqueCategories(data);
         console.log(uniqueCategories);
+
         data.forEach(function(work) {
             const figure = document.createElement("figure");
-            figure.innerHTML =`
-            <img src="${work.imageUrl}" alt="${work.title}">
-            <figcaption>${work.title}</figcaption>
-        `;
-        // ajout de l'attribut data-category avec la categorie correspondante
-        figure.setAttribute("data-category", work.category.name);
-        container.appendChild(figure);
-    })
-    })
-    .catch(function (error) {
+            figure.innerHTML = `
+                <img src="${work.imageUrl}" alt="${work.title}">
+                <figcaption>${work.title}</figcaption>
+            `;
+            //ajout de l'attribut data-category avec la categorie correspondante
+            figure.setAttribute("data-category", work.category.name);
+            container.appendChild(figure);
+        });
+    }catch (error) {
         console.error("error fetching", error);
-    })
+    }
 }
 // je selectione les boutons un à un
 const btnAll = document.querySelector(".tous");
