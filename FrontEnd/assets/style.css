@@ -173,6 +173,7 @@ li:hover {
 	display: flex;	
 	position: fixed;
 	z-index: 1;/*reste au premier plan*/
+	overflow: scroll;
 	left: 0;
 	top: -150px;
 	width: 100%;
@@ -228,6 +229,9 @@ li:hover {
 }
 .fa-trash-can:hover {
 	cursor: pointer;
+}
+.notification {
+	display: none;
 }
 .addWork {
 	color: #B3B3B3;
