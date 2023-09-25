@@ -3,11 +3,12 @@ const apiUrl = "http://localhost:5678/api/works/";
 //je prepare le modal en recuperant les different elements
 const modal = document.getElementById("myModal");
 const btnmobal = document.getElementById("modifier");
-const close = document.getElementsByClassName("close")[0];
+const close = document.getElementsByClassName("close");
 const modalImg = document.querySelector(".modal-image");
-const btnAdditem = document.getElementsByClassName("addItem");
-
-
+const btnAdditem = document.getElementById("addItem");
+const gallery = document.querySelector(".modal-content");
+const modalAddItem = document.querySelector(".modal-addItem"); 
+const back = document.getElementsByClassName("previous")[0];
 //fonction pour recuperer les données depuis l'api
 async function fetchData() {
     try {
@@ -46,11 +47,11 @@ async function deleteElement(work, image) {
             const notification = document.querySelector(".notification");
             notification.textContent = "Élément suprimmer avec succès!";
             notification.style.display = "block";
-
+            
             setTimeout(function (event) {
                 notification.style.display = "none";
                 event.preventDefault();
-            }, 1500);
+            }, 1500);//reappeller le modal
         } else {
             console.log("Erreur lors de la supression");
         }
@@ -88,8 +89,10 @@ btnmobal.onclick = function() {
 }
 
 //fermeture du modal avec le croix
-close.onclick = function() {
-    modal.style.display = "none";
+for (let i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+        modal.style.display = "none";
+    }
 }
 
 //fermeture du modal au click en dehors de la fenetre
@@ -98,3 +101,13 @@ window.onclick = function(event) {
         modal.style.display = "none";
     };
 };
+
+//switch entre fonction suppression et ajout
+btnAdditem.onclick = function() {
+    gallery.style.display = "none";
+    modalAddItem.style.display = "block";
+}
+back.onclick = function() {
+    gallery.style.display = "block";
+    modalAddItem.style.display = "none";
+}

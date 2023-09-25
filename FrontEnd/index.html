@@ -51,13 +51,40 @@
 		<dialog id="myModal" class="modal" style="display: none;">
 			<div class="modal-content">
 				<span class="close">&times;</span>
-				<p class="modal-title">Galerie photo<!--contenu du modal--></p>
+					<p class="modal-title">Galerie photo</p>
 				<div class="modal-image">
 
 				</div>
-				<div id="notification" class="notification"></div>
+				<div class="notification"></div>
 				<hr class="addWork">
-					<button class="addItem"><h3>Ajouter une photo</h3></button>
+					<button id="addItem"><h3>Ajouter une photo</h3></button>
+				</hr>
+			</div>
+			<div class="modal-addItem">
+				<span class="previous">&larr;</span>
+				<span class="close">&times;</span>
+				<p class="modal-title">Ajout photo</p>
+				<div class="photoAdd-block">
+					<i class="fa-regular fa-image"></i>
+					<label for="fileImput" class="custom-file-upload">
+						<p class="addPhoto"> + Ajouter photo</p>
+					</label>
+						<input type="file" class="addPhoto" id="fileImput"></button>
+					<p>jpg, png : 4mo max</p>
+				</div>
+				<form action="#" method="post">
+					<label for="titre">Titre</label>
+					<input type="text" name="title" id="title" required>
+					<label for="categorie">Categorie</label>
+					<select name="categorie" id="categorie">
+						<option value="">--Vauillez choirir une categorie--</option>
+						<option value="objets">Objets</option>
+						<option value="appartements">Appartements</option>
+						<option value="hotels">Hôtels & restaurants</option>
+					</select>
+				</form>
+				<hr class="addWork">
+					<button id="validate"><h3>Valider</h3></button>
 				</hr>
 			</div>
 		</dialog>
