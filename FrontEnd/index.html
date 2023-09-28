@@ -15,8 +15,7 @@
 </head>
 <body>
 	<div class="blackBlock">
-		<i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i><p class="blackBlocktext">Mode édition</p>
-		
+		<i class="fa-regular fa-pen-to-square" style="color: #ffffff;"></i><p class="blackBlocktext">Mode édition</p>		
 	</div>
 <header>
 	<h1>Sophie Bluel <span>Architecte d'inteérieur</span></h1>
@@ -53,7 +52,6 @@
 				<span class="close">&times;</span>
 					<p class="modal-title">Galerie photo</p>
 				<div class="modal-image">
-
 				</div>
 				<div class="notification"></div>
 				<hr class="addWork">
@@ -65,22 +63,22 @@
 				<span class="close">&times;</span>
 				<p class="modal-title">Ajout photo</p>
 				<div class="photoAdd-block">
-					<i class="fa-regular fa-image"></i>
-					<label for="fileImput" class="custom-file-upload">
-						<p class="addPhoto"> + Ajouter photo</p>
-					</label>
+					<div class="add-tool">
+						<i class="fa-regular fa-image"></i>
+						<label for="fileImput" class="custom-file-upload">
+							<p class="addPhoto"> + Ajouter photo</p>
+						</label>
 						<input type="file" class="addPhoto" id="fileImput"></button>
-					<p>jpg, png : 4mo max</p>
-				</div>
+						<p>jpg, png : 4mo max</p>
+					</div>
+					<img class="imported-photo">
+				</div>				
 				<form action="#" method="post">
 					<label for="titre">Titre</label>
 					<input type="text" name="title" id="title" required>
 					<label for="categorie">Categorie</label>
 					<select name="categorie" id="categorie">
 						<option value="">--Vauillez choirir une categorie--</option>
-						<option value="objets">Objets</option>
-						<option value="appartements">Appartements</option>
-						<option value="hotels">Hôtels & restaurants</option>
 					</select>
 				</form>
 				<hr class="addWork">

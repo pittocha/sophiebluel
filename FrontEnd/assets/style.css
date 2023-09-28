@@ -220,6 +220,9 @@ li:hover {
 	margin: 15% auto;
 	padding: 20px;
 }
+.modal-addItem .imported-photo {
+	max-width: 50%;	
+}
 .modal-addItem label {
 	margin: 1em 0 1em 0;
 }
@@ -322,6 +325,7 @@ input[type="file"] {
 	font-weight: 200;
 	font-size: 15px;
 }
+
 #validate {
 	background-color: #1D6154;
   	color: #fff;
