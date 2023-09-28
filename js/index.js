@@ -4,7 +4,7 @@ const container = document.querySelector(".gallery");
 function getUniqueCategories(data) {
     const uniqueCategories = new Set();
     data.forEach(item => {
-        uniqueCategories.add(item.category.name);       
+        uniqueCategories.add(item.category.name,);       
     });
     return [...uniqueCategories]
 }
