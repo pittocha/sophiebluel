@@ -47,26 +47,21 @@ async function fetchCategory() {
 //fonction de suppression
 async function deleteElement(work, image) {
     const token = sessionStorage.getItem("token");
-
     if (!token) {
         console.log("Token manquan");
         return;
-    }
-
-    try {
+    } try {
         const resp = await fetch(apiUrl + work.id, {
             method: "DELETE",
             headers: {
                 Authorization: `bearer ${token}`,
             },
         });
-
         if (resp.ok) {
             modalImg.removeChild(image);
             const notification = document.querySelector(".notification");
             notification.textContent = "Élément suprimmer avec succès!";
-            notification.style.display = "block";
-            
+            notification.style.display = "block";            
             setTimeout(function (event) {
                 notification.style.display = "none";
                 event.preventDefault();
@@ -81,10 +76,8 @@ async function deleteElement(work, image) {
 
 // Fonction pour afficher les images dans le modal
 async function displayImages() {
-    modalImg.innerHTML = "";
-  
-    const data = await fetchData();
-  
+    modalImg.innerHTML = ""; 
+    const data = await fetchData();  
     data.forEach(function (work) {
       const image = document.createElement("div");
       image.innerHTML = `
@@ -102,28 +95,26 @@ async function displayImages() {
       });
     });
 }
-
+let selectedFileToUplaod = null;
 //event listener pour l'ajout de photo
 fileInput.addEventListener("change", function(event) {
     const selectedFile = event.target.files[0];
-
     if (selectedFile) {
         //vérification du format de l'image
         if (selectedFile.type === "image/jpeg" || selectedFile.type === "image/png") {
             //véreifcation de la taille du fichier
             if (selectedFile.size <= 4 * 1024 * 1024) {
-
-                const reader = new FileReader();
-                
+                const reader = new FileReader();               
                 reader.addEventListener("load", function() {
                     //Masquer le contenu de la div add-tool quand la photo est charger
                     addTool.style.display = "none";
                     //mise à jours de l'elements img quand le load est terminer
                     importedPhoto.src = reader.result;
-                });
-                
-                //commencer la lecture du fichier en tant qu'URL
+                    // Stocker le fichier dans une variable globale
+                    selectedFileToUplaod = selectedFile;
+                });                
                 reader.readAsDataURL(selectedFile);
+                console.log(selectedFileToUplaod)
             } else {
                 //message pour indiquer que le fichier est trop volumineux
                 alert("Le fichier est trop volumineux, la taille maximum autorisée est de 4 Mo.");
@@ -139,7 +130,6 @@ fileInput.addEventListener("change", function(event) {
 async function displayCategory() {
     const catId = await fetchCategory();
     const categorieSelect =  document.getElementById("categorie");
-
     catId.forEach(function (category) {
         const option = document.createElement("option");
         option.value = category.id;//l'item value de chaque option correspondrat à l'id de la categorie
@@ -188,3 +178,37 @@ back.onclick = function() {
 }
 
 displayCategory();
+const form = document.getElementById("formulaireDenvoi");
+form.addEventListener("submit",function(event) {
+    event.preventDefault(event);
+    const token = sessionStorage.getItem("token");
+    const title = document.getElementById("title").value;
+    const selectedCategoryId = document.getElementById("categorie").value;
+    if (selectedFileToUplaod) {
+
+        const formData = new FormData();
+        formData.append("image", selectedFileToUplaod);
+        formData.append("title", title);
+        formData.append("category", selectedCategoryId);
+        //pour l'envoi dede formData
+        fetch(apiUrl, {
+            method: "POST",
+            headers: {
+                Authorization: `bearer ${token}`,
+            },
+            body: formData,
+        })
+        .then((response) => {
+            if (response.ok) {
+                console.log("Projet envoyé avec succès.");
+            } else {
+                console.error("Erreur lors de l'envoi.");
+            }
+        })
+        .catch((error) => {
+            console.error("Erreur lors de l'envoi", error);
+        });
+    }else{
+        alert("Veuillez sélectionner une image avant de soumettre le formulaire.")
+    }
+});
