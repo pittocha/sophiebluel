@@ -311,7 +311,7 @@ input[type="file"] {
 .addWork {
 	color: #B3B3B3;
   	width: 550px;
-  	height: 0px; 	
+  	height: 1px;
 }
 .modal-content button{
 	background-color: #1D6154;
