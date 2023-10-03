@@ -212,3 +212,18 @@ form.addEventListener("submit",function(event) {
         alert("Veuillez sélectionner une image avant de soumettre le formulaire.")
     }
 });
+
+const btnValidate = document.getElementById("validate");
+const titleImput = document.getElementById("title");
+const categorieSelect = document.getElementById("categorie");
+function checkFormFields() {
+    if (titleImput.value.trim() !== "" && categorieSelect.value !== "" && fileInput.files.length > 0) {
+        btnValidate.disabled = false;
+    } else {
+        btnValidate.disabled = true;
+    }
+}
+titleImput.addEventListener("input", checkFormFields);
+categorieSelect.addEventListener("change", checkFormFields);
+fileInput.addEventListener("change", checkFormFields);
+btnValidate.disabled = true;
